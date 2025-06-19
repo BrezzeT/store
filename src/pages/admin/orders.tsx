@@ -59,16 +59,16 @@ export default function AdminOrders() {
               <p><strong>Користувач:</strong> {order.user.name} ({order.user.email})</p>
               <p><strong>Сума:</strong> {order.total} грн</p>
               <p><strong>Статус:</strong> {order.status}</p>
-              {order.promoCode && order.promoDiscount > 0 && (
+              {order.promoCode && order.promoDiscount !== undefined && order.promoDiscount > 0 && (
                 <p className="text-green-700 font-semibold mb-2">Промокод: {order.promoCode} (−{order.promoDiscount} грн)</p>
               )}
               <p><strong>Товари:</strong></p>
               <ul>
                 {order.items.map((item, index) => {
-                  const image = item.image || item.product?.image;
-                  const name = item.name || item.product?.name || 'Товар';
-                  const salePrice = item.salePrice ?? item.product?.salePrice;
-                  const price = item.price ?? item.product?.price;
+                  const image = (item as any).image ?? (item as any).product?.image;
+                  const name = (item as any).name || item.product?.name || 'Товар';
+                  const salePrice = (item as any).salePrice ?? item.product?.salePrice;
+                  const price = (item as any).price ?? item.product?.price;
                   return (
                     <li key={index} className="flex items-center gap-3">
                       {image && <img src={image} alt={name} className="w-12 h-12 object-contain rounded bg-gray-100" />}
@@ -107,16 +107,16 @@ export default function AdminOrders() {
             <p><strong>Користувач:</strong> {selectedOrder.user.name} ({selectedOrder.user.email})</p>
             <p><strong>Сума:</strong> {selectedOrder.total} грн</p>
             <p><strong>Статус:</strong> {selectedOrder.status}</p>
-            {selectedOrder.promoCode && selectedOrder.promoDiscount > 0 && (
+            {selectedOrder.promoCode && selectedOrder.promoDiscount !== undefined && selectedOrder.promoDiscount > 0 && (
               <p className="text-green-700 font-semibold mb-2">Промокод: {selectedOrder.promoCode} (−{selectedOrder.promoDiscount} грн)</p>
             )}
             <p><strong>Товари:</strong></p>
             <ul>
               {selectedOrder.items.map((item, index) => {
-                const image = item.image || item.product?.image;
-                const name = item.name || item.product?.name || 'Товар';
-                const salePrice = item.salePrice ?? item.product?.salePrice;
-                const price = item.price ?? item.product?.price;
+                const image = (item as any).image ?? (item as any).product?.image;
+                const name = (item as any).name || item.product?.name || 'Товар';
+                const salePrice = (item as any).salePrice ?? item.product?.salePrice;
+                const price = (item as any).price ?? item.product?.price;
                 return (
                   <li key={index} className="flex items-center gap-3">
                     {image && <img src={image} alt={name} className="w-12 h-12 object-contain rounded bg-gray-100" />}
