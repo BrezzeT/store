@@ -13,15 +13,15 @@ export default function CatalogPage() {
   const [category, setCategory] = useState('')
   const [subcategory, setSubcategory] = useState('')
   const [loading, setLoading] = useState(true)
-  const search = searchParams.get('search') || ''
+  const search = searchParams?.get('search') || ''
   const { addToCart } = useCart()
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
 
   // Ініціалізація фільтрів з query-параметрів
   useEffect(() => {
-    const cat = searchParams.get('category') || ''
-    const subcat = searchParams.get('subcategory') || ''
+    const cat = searchParams?.get('category') || ''
+    const subcat = searchParams?.get('subcategory') || ''
     setCategory(cat)
     setSubcategory(subcat)
     // eslint-disable-next-line
