@@ -17,7 +17,7 @@ export async function connectDB() {
     if (process.env.MONGODB_DB) {
       mongooseOptions.dbName = process.env.MONGODB_DB
     }
-    cached.promise = mongoose.connect(MONGODB_URI, mongooseOptions).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGODB_URI!, mongooseOptions).then((mongoose) => {
       return mongoose
     })
   }
